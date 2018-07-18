@@ -58,7 +58,7 @@ class ServiceOptionController extends AppBaseController
         ]);
         $input = $request->all();
         $input['created_by'] = Auth::user()->mf_id;
-        $input['client_id']= Auth::user()->client_id;
+//        $input['client_id']= Auth::user()->client_id;
 
         $serviceOption = $this->serviceOptionRepository->create($input);
 

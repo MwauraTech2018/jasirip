@@ -55,15 +55,15 @@ class RoutesTableSeeder extends Seeder
             'icon'=> 'fa-wrench',
             'sequence'=>2,
         ]);
-        $child = Route::create([
-            'route_name'=>'Property Expenses',
-            'parent_route' => $parent->id,
-            'url'=>'expenditures'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
+//        $child = Route::create([
+//            'route_name'=>'Property Expenses',
+//            'parent_route' => $parent->id,
+//            'url'=>'expenditures'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 
 
         $child = Route::create([
