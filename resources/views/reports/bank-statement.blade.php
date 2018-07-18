@@ -36,7 +36,7 @@
                                 {{--<input type="text" required value="{{ \Carbon\Carbon::today()->startOfMonth()->toDateString() }}" class="form-control" id="date-from" name="date_from">--}}
                             </div>
                             <div class="col-md-3">
-                                <label>From</label>
+                                <label>From:D</label>
                                 <input type="date" required value="{{ \Carbon\Carbon::today()->startOfMonth()->toDateString() }}" class="form-control" id="date-from" name="date_from">
                             </div>
                             <div class="col-md-3">
