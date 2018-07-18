@@ -1,5 +1,5 @@
 @extends('layouts.app')
- @section("pageTitle",'Bank Statement')
+ @section("pageTitle",'Bank Statement2')
  {{--@section("pageSubtitle",'create, edit, delete Claims')--}}
   @section("breadcrumbs")
             <li>Reports</li>
