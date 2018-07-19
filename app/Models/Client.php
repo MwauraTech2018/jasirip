@@ -36,6 +36,7 @@ class Client extends Model
 
 
     public $fillable = [
+        'member_no',
         'full_name',
         'national_id',
         'gender',
@@ -51,6 +52,7 @@ class Client extends Model
      * @var array
      */
     protected $casts = [
+        'member_no'=>'integer',
         'full_name' => 'string',
         'national_id' => 'string',
         'gender' => 'string',

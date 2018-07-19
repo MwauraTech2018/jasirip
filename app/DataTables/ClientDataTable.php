@@ -29,7 +29,7 @@ class ClientDataTable extends DataTable
      */
     public function query(Client $model)
     {
-        return $model->newQuery()->where('b_role',\client);
+        return $model->newQuery()->where('b_role',\client)->orderBy('id');
 
 
 
@@ -71,6 +71,9 @@ class ClientDataTable extends DataTable
     {
         return [
             'full_name',
+            'member_no'=>[
+                'title'=>'Members_No'
+            ],
             'national_id',
             'gender',
             'phone_number',

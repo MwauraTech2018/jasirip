@@ -1,4 +1,9 @@
 <!-- Full Name Field -->
+
+<div class="form-group col-sm-12">
+    {!! Form::label('member_no', 'Member_No:') !!}
+    {!! Form::text('member_no', null, ['class' => 'form-control']) !!}
+</div>
 <div class="form-group col-sm-12">
     {!! Form::label('full_name', 'Full Name:') !!}
     {!! Form::text('full_name', null, ['class' => 'form-control']) !!}
