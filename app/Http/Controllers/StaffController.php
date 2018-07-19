@@ -34,6 +34,9 @@ class StaffController extends AppBaseController
      */
     public function index(StaffDataTable $staffDataTable)
     {
+        $staffd=Role::where('code','<>',sys_admin)->get();
+//        print_r($staffd->toArray());die();
+
         return $staffDataTable->render('staff.index',[
             'roles'=>Role::where('code','<>',sys_admin)->get()
         ]);
@@ -63,7 +66,7 @@ class StaffController extends AppBaseController
         DB::transaction(function ()use ($input){
             $input['b_role']= staff;
             $input['created_by'] = Auth::user()->mf_id;
-            $input['client_id'] = Auth::user()->client_id;
+//            $input['client_id'] = Auth::user()->client_id;
             $staff = $this->staffRepository->create($input);
 
             $account = User::create([
@@ -75,7 +78,7 @@ class StaffController extends AppBaseController
                 'created_by'=>$input['created_by'],
                 'password_changed'=>false,
                 'email_confirmed'=>false,
-                'client_id'=>$input['client_id']
+//                'client_id'=>$input['client_id']
             ]);
         });
 

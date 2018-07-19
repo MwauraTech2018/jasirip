@@ -3,6 +3,7 @@
 const sys_admin = 'SYSADMIN';
 const core_admin = 'ADMIN';
 const landlord = 'LANDLORD';
+const front='FRONTOFFICE';
 const pm = 'PROPERTY MANAGER';
 const tenant = 'TENANT';
 const debit = "DEBIT";
@@ -15,3 +16,4 @@ const monthly = 'Monthly';
 const once = 'Once';
 const rent = 'RENT';
 const customer = 'CUSTOMER';
+const client='CLIENT';

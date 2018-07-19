@@ -13,7 +13,12 @@
 <!-- Gender Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('gender', 'Gender:') !!}
-    {!! Form::text('gender', null, ['class' => 'form-control']) !!}
+    <select class="form-control select2" name="gender" id="gender">
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+
+    </select>
+    {{--{!! Form::text('gender', null, ['class' => 'form-control']) !!}--}}
 </div>
 
 <!-- Phone Number Field -->
@@ -29,14 +34,14 @@
 </div>
 
 <!-- B Role Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('b_role', 'B Role:') !!}
-    {!! Form::text('b_role', null, ['class' => 'form-control']) !!}
-</div>
+{{--<div class="form-group col-sm-12">--}}
+    {{--{!! Form::label('b_role', 'B Role:') !!}--}}
+    {{--{!! Form::text('b_role', null, ['class' => 'form-control']) !!}--}}
+{{--</div>--}}
 
 <!-- Created By Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('created_by', 'Created By:') !!}
-    {!! Form::number('created_by', null, ['class' => 'form-control']) !!}
-</div>
+{{--<div class="form-group col-sm-12">--}}
+    {{--{!! Form::label('created_by', 'Created By:') !!}--}}
+    {{--{!! Form::number('created_by', null, ['class' => 'form-control']) !!}--}}
+{{--</div>--}}
 

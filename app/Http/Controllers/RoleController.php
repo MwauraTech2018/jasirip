@@ -65,7 +65,7 @@ class RoleController extends AppBaseController
     {
         $input = $request->all();
         $input['created_by'] = Auth::id();
-        $input["client_id"] = Auth::user()->client_id;
+//        $input["client_id"] = Auth::user()->client_id;
         $role = $this->roleRepository->create($input);
 
         Flash::success('Role saved successfully.');

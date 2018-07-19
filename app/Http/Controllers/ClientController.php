@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateClientRequest;
 use App\Repositories\ClientRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class ClientController extends AppBaseController
@@ -52,7 +53,12 @@ class ClientController extends AppBaseController
     public function store(CreateClientRequest $request)
     {
         $input = $request->all();
-
+        $this->validate($request,[
+            'phone_number'=>'required|unique:masterfiles,phone_number'
+//            'full_name'=>'required|unique:masterfiles,full_name'
+        ]);
+        $input['b_role'] = client;
+        $input['created_by']=Auth::user()->mf_id;
         $client = $this->clientRepository->create($input);
 
         Flash::success('Client saved successfully.');
@@ -77,7 +83,9 @@ class ClientController extends AppBaseController
             return redirect(route('clients.index'));
         }
 
-        return view('clients.show')->with('client', $client);
+//        return view('clients.show')->with('client', $client);
+        return response()->json($client);
+
     }
 
     /**

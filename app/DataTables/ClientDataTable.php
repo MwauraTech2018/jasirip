@@ -29,7 +29,13 @@ class ClientDataTable extends DataTable
      */
     public function query(Client $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->where('b_role',\client);
+
+
+
+//        return $model->newQuery()->where('b_role',\staff)
+//            ->orderByDesc('id')
+//            ;
     }
 
     /**
@@ -44,8 +50,8 @@ class ClientDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['width' => '80px'])
             ->parameters([
-                'dom'     => 'Bfrtip',
-                'order'   => [[0, 'desc']],
+//                'dom'     => 'Bfrtip',
+//                'order'   => [[0, 'desc']],
                 'buttons' => [
                     'create',
                     'export',
@@ -69,8 +75,8 @@ class ClientDataTable extends DataTable
             'gender',
             'phone_number',
             'email',
-            'b_role',
-            'created_by'
+            'b_role'
+//            'created_by'
         ];
     }
 

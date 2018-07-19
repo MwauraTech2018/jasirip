@@ -15,11 +15,15 @@ class RoleTableSeeder extends Seeder
     {
         $accessL = \App\Models\AccessLevel::where('code','ALL')->first();
         $limited = \App\Models\AccessLevel::where('code','LIMITED')->first();
+//        \App\Models\RoleRoute::truncate();
+//        \App\Models\Role::truncate();
+
 //        $client = \App\Models\Client::first();
         Role::create(['name' => 'System Admin', 'code' => self::sys_admin,
             'access_level_id'=> $accessL->id]);
         Role::create(['name' => 'Admin', 'code' => core_admin,'access_level_id'=> $accessL->id]);
         Role::create(['name' => 'Landlord', 'code' => landlord,'access_level_id'=> $limited->id]);
         Role::create(['name' => 'Property Manager', 'code' => pm,'access_level_id'=> $accessL->id]);
+//        Role::create(['name'=>'Front Office','code' =>front,'access_level_id'=> $limited->id]);
     }
 }
