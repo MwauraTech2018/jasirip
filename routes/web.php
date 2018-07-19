@@ -23,7 +23,7 @@ Route::resource('accessLevels', 'AccessLevelController');
 
 Route::resource('masterfiles', 'MasterfileController');
 
-Route::resource('clients', 'ClientController');
+
 
 
 
@@ -72,7 +72,7 @@ Route::post('getClaimReport','ReportController@getClaimReport');
 Route::get('paymentReport','ReportController@paymentReport');
 Route::post('getPaymentsReport','ReportController@getPaymentReport');
 
-Route::resource('clients', 'ClientController');
+
 
 Route::resource('landlords', 'LandlordController');
 
