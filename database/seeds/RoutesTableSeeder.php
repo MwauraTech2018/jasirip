@@ -95,7 +95,7 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($manager);
         $child->roles()->attach($coreAdmin);
 
-        ####### crm
+        ####### Broadcasts
 
         $parent = Route::create([
             'route_name'=> 'Broadcasts',
@@ -123,24 +123,24 @@ class RoutesTableSeeder extends Seeder
         ]);
 
         $child = Route::create([
-            'route_name'=>'All Landlords',
+            'route_name'=>'All Clients',
             'parent_route' => $parent->id,
-            'url'=>'landlords'
+            'url'=>'clients'
         ]);
         $child->roles()->attach($admin);
         $child->roles()->attach($frontOffice);
         $child->roles()->attach($manager);
         $child->roles()->attach($coreAdmin);
 
-        $child = Route::create([
-            'route_name'=>'All Tenants',
-            'parent_route' => $parent->id,
-            'url'=>'tenants'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
+//        $child = Route::create([
+//            'route_name'=>'All Tenants',
+//            'parent_route' => $parent->id,
+//            'url'=>'tenants'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 
         $child = Route::create([
             'route_name'=>'All Staff',
@@ -150,15 +150,15 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($admin);
 
 
-        $child = Route::create([
-            'route_name'=>'All Customers',
-            'parent_route' => $parent->id,
-            'url'=>'customers'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
+//        $child = Route::create([
+//            'route_name'=>'All Customers',
+//            'parent_route' => $parent->id,
+//            'url'=>'customers'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 
         ####### property manager
 
