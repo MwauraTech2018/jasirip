@@ -72,7 +72,7 @@ class ClientDataTable extends DataTable
         return [
             'full_name',
             'member_no'=>[
-                'title'=>'Members_No'
+                'title'=>'Member Number'
             ],
             'national_id',
             'gender',

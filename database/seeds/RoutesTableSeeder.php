@@ -163,7 +163,7 @@ class RoutesTableSeeder extends Seeder
         ####### property manager
 
         $parent = Route::create([
-            'route_name'=> 'Property Manager',
+            'route_name'=> 'Savings',
             'icon'=> 'fa-home',
             'sequence'=>4,
         ]);

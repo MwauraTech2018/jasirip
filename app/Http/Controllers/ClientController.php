@@ -54,8 +54,9 @@ class ClientController extends AppBaseController
     {
         $input = $request->all();
         $this->validate($request,[
+            'member_no'=>'required|unique:masterfiles,member_no',
             'phone_number'=>'required|unique:masterfiles,phone_number'
-//            'full_name'=>'required|unique:masterfiles,full_name'
+//
         ]);
         $input['b_role'] = client;
         $input['created_by']=Auth::user()->mf_id;

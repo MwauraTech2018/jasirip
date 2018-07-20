@@ -78,7 +78,7 @@ Route::resource('landlords', 'LandlordController');
 
 Route::resource('tenants', 'TenantController');
 
-Route::resource('properties', 'PropertyController');
+
 
 Route::resource('propertyUnits', 'PropertyUnitController');
 Route::get('units/{id}', 'PropertyUnitController@propertyUnits');
