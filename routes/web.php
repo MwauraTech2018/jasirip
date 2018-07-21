@@ -189,3 +189,5 @@ Route::resource('customers', 'CustomerController');
 Route::resource('soldProperties', 'SoldPropertyController');
 
 Route::resource('clients', 'ClientController');
+
+Route::resource('savings', 'SavingController');

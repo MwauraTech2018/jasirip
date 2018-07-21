@@ -169,9 +169,9 @@ class RoutesTableSeeder extends Seeder
         ]);
 
         $child = Route::create([
-            'route_name'=>'All Properties',
+            'route_name'=>'All Savings',
             'parent_route' => $parent->id,
-            'url'=>'properties'
+            'url'=>'savings'
         ]);
         $child->roles()->attach($admin);
         $child->roles()->attach($frontOffice);
