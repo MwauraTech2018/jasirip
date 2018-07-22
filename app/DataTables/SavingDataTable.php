@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Saving;
+use Illuminate\Support\Carbon;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -18,7 +19,19 @@ class SavingDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'savings.datatables_actions');
+//        dd($dataTable);
+//        return $dataTable
+//        ->editColumn('received_on',function($query){
+//        return Carbon::parse($query->received_on)->toDateString();
+//    });
+        return $dataTable
+            ->editColumn('received_on',function($payment){
+//
+                return Carbon::parse($payment->received_on)->toDateString();
+//             ->editColumn('created_at')
+            });
+
+//        return $dataTable->addColumn('action', 'savings.datatables_actions');
     }
 
     /**
@@ -29,7 +42,13 @@ class SavingDataTable extends DataTable
      */
     public function query(Saving $model)
     {
-        return $model->newQuery();
+//        return $model->newQuery()->with(['masterfile']);
+
+        return $model->newQuery()
+            ->select('payments.*')
+            ->orderByDesc('payments.id')
+            ->with(['masterfile']);
+
     }
 
     /**
@@ -64,26 +83,35 @@ class SavingDataTable extends DataTable
     protected function getColumns()
     {
         return [
+
+//            'service_id',
+//            'client_id',
+            'masterfile.full_name'=>[
+                'title'=>'Client'
+            ],
+            'masterfile.member_no'=>[
+                'title'=>'Account Number'
+            ],
             'payment_mode',
-            'service_id',
-            'client_id',
             'ref_number',
-            'bank_id',
+//            'bank_id',
             'amount',
-            'paybill',
-            'phone_number',
-            'BillRefNumber',
-            'TransID',
-            'TransTime',
-            'FirstName',
-            'middleName',
-            'LastName',
-            'received_on',
-            'created_by',
-            'status',
-            'transferred_from',
-            'transferred_to',
-            'transferred_by'
+            'received_on'
+//            'paybill',
+//            'phone_number',
+//            'BillRefNumber',
+//            'TransID'
+
+//            'TransTime',
+//            'FirstName',
+//            'middleName',
+//            'LastName',
+//            'received_on',
+//            'created_by',
+//            'status',
+//            'transferred_from',
+//            'transferred_to',
+//            'transferred_by'
         ];
     }
 

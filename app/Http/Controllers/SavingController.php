@@ -6,6 +6,7 @@ use App\DataTables\SavingDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateSavingRequest;
 use App\Http\Requests\UpdateSavingRequest;
+use App\Models\Payment;
 use App\Repositories\SavingRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -29,7 +30,10 @@ class SavingController extends AppBaseController
      */
     public function index(SavingDataTable $savingDataTable)
     {
-        return $savingDataTable->render('savings.index');
+        return $savingDataTable->render('savings.index',[
+
+            'payments'=>Payment::all()
+        ]);
     }
 
     /**

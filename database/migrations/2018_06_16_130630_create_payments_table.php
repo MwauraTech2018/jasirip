@@ -21,7 +21,12 @@ class CreatePaymentsTable extends Migration
                 ->references('id')
                 ->on('service_options')
                 ->onDelete('cascade');
-            $table->bigInteger('client_id')->index()->nullable();
+            $table->bigInteger('client_id')->index()->unsigned()->nullable();
+            $table->foreign('client_id')
+                ->references('id')
+                ->on('masterfiles')
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->string('ref_number')->nullable();
             $table->integer('bank_id')->nullable();
             $table->double('amount');

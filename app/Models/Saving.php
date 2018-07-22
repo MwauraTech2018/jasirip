@@ -112,4 +112,10 @@ class Saving extends Model
     {
         return $this->belongsTo(\App\Models\ServiceOption::class);
     }
+    public function masterfile()
+    {
+//        return $this->belongsTo(\App\Models\Masterfile::class,'landlord_id');
+        return $this->belongsTo(\App\Models\Masterfile::class,'client_id');
+
+    }
 }
