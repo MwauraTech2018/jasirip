@@ -30,7 +30,7 @@ class ReportController extends Controller
     public function tenantStatement(){
 
         return view('reports.tenant-statement',[
-            'tenants'=>Masterfile::where('b_role',\tenant)->get()
+            'tenants'=>Masterfile::where('b_role',\client)->get()
         ]);
     }
 
@@ -118,10 +118,10 @@ class ReportController extends Controller
             return redirect('tenantStatement');
         }
         $statements = CustomerAccount::query()
-            ->where('tenant_id',$request->tenant)
+            ->where('client_id',$request->tenant)
             ->orderBy('id')
             ->get();
-//        print_r($statement->toArray());die;
+        print_r($statements ->toArray());die;
         $tenantStatements =[];
         if(count($statements)){
             foreach ($statements as $statement){

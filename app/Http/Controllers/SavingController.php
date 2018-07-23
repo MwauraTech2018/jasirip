@@ -19,6 +19,7 @@ class SavingController extends AppBaseController
 
     public function __construct(SavingRepository $savingRepo)
     {
+        $this->middleware('auth');
         $this->savingRepository = $savingRepo;
     }
 
@@ -30,10 +31,11 @@ class SavingController extends AppBaseController
      */
     public function index(SavingDataTable $savingDataTable)
     {
-        return $savingDataTable->render('savings.index',[
-
-            'payments'=>Payment::all()
-        ]);
+        return $savingDataTable->render('savings.index');
+//        ,[
+//
+//            'payments'=>Payment::all()
+//        ]);
     }
 
     /**
@@ -60,6 +62,7 @@ class SavingController extends AppBaseController
         $saving = $this->savingRepository->create($input);
 
         Flash::success('Saving saved successfully.');
+
 
         return redirect(route('savings.index'));
     }
