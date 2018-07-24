@@ -62,6 +62,11 @@ class SavingController extends AppBaseController
     {
         $input = $request->all();
 
+        $this->validate($request,[
+            'ref_number'=>'required|unique:payments,ref_number'
+//            'phone_number'=>'required|unique:masterfiles,phone_number'
+            ]);
+
 //        dd($input);die;
 
 
