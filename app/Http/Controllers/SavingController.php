@@ -6,10 +6,13 @@ use App\DataTables\SavingDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateSavingRequest;
 use App\Http\Requests\UpdateSavingRequest;
+use App\Models\CustomerAccount;
 use App\Models\Payment;
 use App\Repositories\SavingRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class SavingController extends AppBaseController
@@ -59,9 +62,40 @@ class SavingController extends AppBaseController
     {
         $input = $request->all();
 
-        $saving = $this->savingRepository->create($input);
+//        dd($input);die;
 
-        Flash::success('Saving saved successfully.');
+
+        $payment=Payment::create([
+
+            'payment_mode'=>$request->payment_mode,
+            'service_id'=>$request->service_id,
+            'client_id'=>$request->client_id,
+            'ref_number'=>$request->ref_number,
+            'bank_id'=>$request->bank_id,
+            'amount'=>$request->amount,
+            'received_on'=>Carbon::now()
+        ]);
+
+        DB::transaction(function ()use($payment,$request)
+        {
+
+                    $acc=CustomerAccount::create([
+                        'client_id'=>$request->client_id,
+                        'payment_id'=>$payment->id,
+                        'ref_number'=>$request->ref_number,
+                        'transaction_type'=>debit,
+                        'date'=>Carbon::now(),
+                        'amount'=>$payment->amount
+                    ]);
+                    $payment->status=true;
+                    $payment->save();
+
+        });
+
+
+//        $saving = $this->savingRepository->create($input);
+//
+//        Flash::success('Saving saved successfully.');
 
 
         return redirect(route('savings.index'));

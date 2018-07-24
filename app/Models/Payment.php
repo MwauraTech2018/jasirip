@@ -47,8 +47,8 @@ class Payment extends Model
 
     public $fillable = [
         'payment_mode',
-        'house_number',
-        'tenant_id',
+        'service_id',
+        'client_id',
         'ref_number',
         'amount',
         'paybill',
@@ -60,7 +60,6 @@ class Payment extends Model
         'middleName',
         'LastName',
         'received_on',
-        'client_id',
         'created_by',
         'bank_id',
         'status',

@@ -39,10 +39,7 @@ class CustomerAccount extends Model
 
 
     public $fillable = [
-        'tenant_id',
-        'lease_id',
-        'unit_id',
-        'bill_id',
+        'client_id',
         'payment_id',
         'ref_number',
         'transaction_type',
