@@ -27,7 +27,7 @@ class ReportController extends Controller
         $this->middleware('auth');
     }
 
-    public function tenantStatement(){
+    public function clientstatement(){
 
         return view('reports.tenant-statement',[
             'tenants'=>Masterfile::where('b_role',\client)->get()
@@ -117,64 +117,82 @@ class ReportController extends Controller
         if(!$request->isMethod('POST')){
             return redirect('tenantStatement');
         }
+
+        $input=$request->all();
+//        dd($input);
         $statements = CustomerAccount::query()
-            ->where('client_id',$request->tenant)
+            ->where('client_id',$request->client)
             ->orderBy('id')
             ->get();
-        print_r($statements ->toArray());die;
+//        print_r($statements ->toArray());die;
+
+//       $clients=Masterfile::find($request->tenant);
+
+//         print_r($clients->toArray());die;
+
         $tenantStatements =[];
-        if(count($statements)){
-            foreach ($statements as $statement){
-                if(is_null($statement->bill_id)){
-                    $trans =[
-                        'date'=>$statement->date,
-                        'house_number'=>PropertyUnit::find($statement->unit_id)->unit_number,
-                        'bill_type'=>'Payment',
-                        'debit'=>$statement->amount,
-                        'ref_number'=>$statement->ref_number,
-                        'credit'=> 0
-                    ];
-                    $tenantStatements[]= $trans;
-                }else{
-                    $billDetails = BillDetail::where('bill_id',$statement->bill_id)->get();
-                    $bill = Bill::query()
-                        ->select("property_units.unit_number as house_number")
-                        ->leftJoin('leases','leases.id','=','bills.lease_id')
-                        ->leftJoin('property_units','property_units.id','=','leases.unit_id')
-                        ->where('bills.id',$statement->bill_id)->first();
-                    if(count($billDetails)){
-                        foreach ($billDetails as $billDetail){
-                            if($billDetail->amount < 0){
-                                $trans =[
-                                    'date'=>$billDetail->bill_date,
-                                    'house_number'=>$bill->house_number,
-                                    'bill_type'=>'Bill',
-                                    'ref_number'=>"Lease Reversal",
-                                    'debit'=> -$billDetail->amount,
-                                    'credit'=>0,
-                                ];
-                            }else{
-                                $trans =[
-                                    'date'=>$billDetail->bill_date,
-                                    'house_number'=>$bill->house_number,
-                                    'bill_type'=>'Bill',
-                                    'ref_number'=>ServiceOption::find($billDetail->service_bill_id)->name,
-                                    'debit'=> 0,
-                                    'credit'=>$billDetail->amount,
-                                ];
-                            }
+//        if(count($statements)){
+//            foreach ($statements as $statement){
+//                $trans=[
+//
+//                    'date'=>$statement->date
+//
+//
+//                ];
+//
+//
+//            };
+//            foreach ($statements as $statement){
+//                if(is_null($statement->bill_id)){
+//                    $trans =[
+//                        'date'=>$statement->date,
+//                        'house_number'=>PropertyUnit::find($statement->unit_id)->unit_number,
+//                        'bill_type'=>'Payment',
+//                        'debit'=>$statement->amount,
+//                        'ref_number'=>$statement->ref_number,
+//                        'credit'=> 0
+//                    ];
+//                    $tenantStatements[]= $trans;
+//                }else{
+//                    $billDetails = BillDetail::where('bill_id',$statement->bill_id)->get();
+//                    $bill = Bill::query()
+//                        ->select("property_units.unit_number as house_number")
+//                        ->leftJoin('leases','leases.id','=','bills.lease_id')
+//                        ->leftJoin('property_units','property_units.id','=','leases.unit_id')
+//                        ->where('bills.id',$statement->bill_id)->first();
+//                    if(count($billDetails)){
+//                        foreach ($billDetails as $billDetail){
+//                            if($billDetail->amount < 0){
+//                                $trans =[
+//                                    'date'=>$billDetail->bill_date,
+//                                    'house_number'=>$bill->house_number,
+//                                    'bill_type'=>'Bill',
+//                                    'ref_number'=>"Lease Reversal",
+//                                    'debit'=> -$billDetail->amount,
+//                                    'credit'=>0,
+//                                ];
+//                            }else{
+//                                $trans =[
+//                                    'date'=>$billDetail->bill_date,
+//                                    'house_number'=>$bill->house_number,
+//                                    'bill_type'=>'Bill',
+//                                    'ref_number'=>ServiceOption::find($billDetail->service_bill_id)->name,
+//                                    'debit'=> 0,
+//                                    'credit'=>$billDetail->amount,
+//                                ];
+//                            }
+//
+//                            $tenantStatements[]= $trans;
+//                        }
+//                    }
+//                }
+//
+//            }
 
-                            $tenantStatements[]= $trans;
-                        }
-                    }
-                }
-
-            }
-        }
         return view('reports.tenant-statement',[
             'tenants'=>Masterfile::where('b_role',\tenant)->get(),
-            'statements'=>collect($tenantStatements),
-            'tenant_name'=>Masterfile::find($request->tenant)->full_name
+            'statements'=>collect($statements),
+            'client_name'=>Masterfile::find($request->client)->full_name
         ]);
     }
 

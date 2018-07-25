@@ -119,7 +119,7 @@ Route::resource('eventMessages', 'EventMessageController');
 
 #### Reports
 
-Route::get('tenantStatement','ReportController@tenantStatement');
+Route::get('clientStatement','ReportController@clientstatement');
 Route::get('propertyStatement','ReportController@propertyStatement');
 Route::get('tenantArrears','ReportController@tenantArrears');
 Route::get('plotStatement','ReportController@plotStatement');

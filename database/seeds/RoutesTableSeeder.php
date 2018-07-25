@@ -303,9 +303,9 @@ class RoutesTableSeeder extends Seeder
         ]);
 
         $child = Route::create([
-            'route_name'=>'Tenant Statement',
+            'route_name'=>'Client Statement',
             'parent_route' => $parent->id,
-            'url'=>'tenantStatement'
+            'url'=>'clientStatement'
         ]);
         $child->roles()->attach($admin);
         $child->roles()->attach($frontOffice);

@@ -23,7 +23,7 @@
                     {{ csrf_field() }}
                 <div class="col-md-5 col-md-offset-2">
                     <label>Tenant</label>
-                    <select name="tenant" class="form-control select2" required>
+                    <select name="client" class="form-control select2" required>
                         <option value="">Select tenant</option>
                         @if(count($tenants))
                             @foreach($tenants as $tenant)
@@ -49,7 +49,7 @@
 
         <div class="row">
             <div class="col-md-12 table-responsive">
-                <h4 class="">Tenant Statement for: <strong>{{ $tenant_name }}</strong></h4>
+                <h4 class="">Tenant Statement for: <strong>{{ $client_name }}</strong></h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -67,20 +67,21 @@
                         <?php $runningBalance =0;?>
                         @foreach($statements as $statement)
                             <?php
-                            if($statement['credit'] > 0){
-                                $runningBalance = $runningBalance +  $statement['credit'];
-                            }else{
-                                $runningBalance = $runningBalance - $statement['debit'];
-                            }
+//                            if($statement['credit'] > 0){
+//                                $runningBalance = $runningBalance +  $statement['credit'];
+//                            }else{
+//                                $runningBalance = $runningBalance - $statement['debit'];
+//                            }
                             ?>
                             <tr>
-                                <td >{{ \Carbon\Carbon::parse($statement['date'])->toFormattedDateString() }}</td>
-                                <td>{{ $statement['house_number'] }}</td>
-                                <td>{{ $statement['bill_type'] }}</td>
-                                <td>{{ $statement['ref_number'] }}</td>
-                                <td style="text-align: right">{{ number_format($statement['credit'],2) }}</td>
-                                <td style="text-align: right">{{ number_format($statement['debit'],2) }}</td>
-                                <td style="text-align: right">{{ number_format($runningBalance,2) }}</td>
+                                <td >{{ \Carbon\Carbon::parse($statement->date)->toFormattedDateString() }}</td>
+                                {{--<td>{{$statement->date}}</td>--}}
+                                {{--<td>{{ $statement['house_number'] }}</td>--}}
+                                {{--<td>{{ $statement['bill_type'] }}</td>--}}
+                                {{--<td>{{ $statement['ref_number'] }}</td>--}}
+                                {{--<td style="text-align: right">{{ number_format($statement['credit'],2) }}</td>--}}
+                                {{--<td style="text-align: right">{{ number_format($statement['debit'],2) }}</td>--}}
+                                {{--<td style="text-align: right">{{ number_format($runningBalance,2) }}</td>--}}
                             </tr>
                             @endforeach
                         @else
