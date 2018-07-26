@@ -78,7 +78,8 @@ class SavingController extends AppBaseController
             'ref_number'=>$request->ref_number,
             'bank_id'=>$request->bank_id,
             'amount'=>$request->amount,
-            'received_on'=>Carbon::now()
+            'received_on'=>$request->received_on
+//            'received_on'=>Carbon::now()
         ]);
 
         DB::transaction(function ()use($payment,$request)
@@ -89,7 +90,7 @@ class SavingController extends AppBaseController
                         'payment_id'=>$payment->id,
                         'ref_number'=>$request->ref_number,
                         'transaction_type'=>debit,
-                        'date'=>Carbon::now(),
+                        'date'=>$request->received_on,
                         'amount'=>$payment->amount
                     ]);
                     $payment->status=true;

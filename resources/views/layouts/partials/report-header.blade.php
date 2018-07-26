@@ -6,12 +6,12 @@
     <!-- /.col -->
     <div class="col-sm-4 invoice-col text-center">
         <address>
-            <h3>Marite Enterprises Limited</h3>
-            Lentile House, 2<sup>nd</sup> Floor Rm 213<br>
+            <h3>Jasiri Sacco Limited</h3>
+            Lentile House,Ground<sup></sup> Floor Rm 213<br>
             P.O Box 1440 - 10400 Nanyuki<br>
             {{--<br>--}}
             Phone number: 0700634000<br>
-            Email: info@mariteenterprises.co.ke
+            Email: info@jasirisacco.co.ke
         </address>
     </div>
     <!-- /.col -->

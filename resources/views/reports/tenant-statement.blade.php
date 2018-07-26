@@ -1,9 +1,9 @@
 @extends('layouts.app')
- @section("pageTitle",'Tenant Statement Report')
+ @section("pageTitle",'Clients Statement Report')
  {{--@section("pageSubtitle",'create, edit, delete Claims')--}}
   @section("breadcrumbs")
             <li>Reports</li>
-            <li>Tenant Statement</li>
+            <li>Clients Statement</li>
          @endsection
 @section('content')
     {{--<div class="col-md-12">--}}
@@ -22,9 +22,9 @@
                 <form action="{{ url('getTenantStatement') }}" id="policies-form" method="post">
                     {{ csrf_field() }}
                 <div class="col-md-5 col-md-offset-2">
-                    <label>Tenant</label>
+                    <label>Client</label>
                     <select name="client" class="form-control select2" required>
-                        <option value="">Select tenant</option>
+                        <option value="">Select Client</option>
                         @if(count($tenants))
                             @foreach($tenants as $tenant)
                                 <option value="{{ $tenant->id }}">{{ $tenant->full_name }}</option>
@@ -49,16 +49,13 @@
 
         <div class="row">
             <div class="col-md-12 table-responsive">
-                <h4 class="">Tenant Statement for: <strong>{{ $client_name }}</strong></h4>
+                <h4 class="">Client Statement for: <strong>{{ $client_name }}</strong></h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Date</th>
-                            {{--<th>House Number</th>--}}
-                            {{--<th>Bill Type</th>--}}
                             <th>Reference</th>
-                            <th style="text-align: right">Debit</th>
-                            {{--<th style="text-align: right">Credit</th>--}}
+                            <th>Debit</th>
                             <th style="text-align: right">Running Balance</th>
                         </tr>
                     </thead>
@@ -67,22 +64,17 @@
                         <?php $runningBalance =0;?>
                         @foreach($statements as $statement)
                             <?php
-//                            if($statement['credit'] > 0){
-//                                $runningBalance = $runningBalance +  $statement['credit'];
-//                            }else{
-//                                $runningBalance = $runningBalance - $statement['debit'];
-//                            }
+                            if($statement->amount> 0){
+                                $runningBalance = $runningBalance +  $statement->amount;
+                            }else{
+                                $runningBalance = $runningBalance - $statement->amount;
+                            }
                             ?>
                             <tr>
                                 <td >{{ \Carbon\Carbon::parse($statement->date)->toFormattedDateString() }}</td>
-                                {{--<td>{{$statement->date}}</td>--}}
-                                {{--<td>{{ $statement['house_number'] }}</td>--}}
-                                {{--<td>{{ $statement['bill_type'] }}</td>--}}
                                 <td>{{ $statement->ref_number}}</td>
                                 <td>{{$statement->amount}}</td>
-                                {{--<td style="text-align: right">{{ number_format($statement['credit'],2) }}</td>--}}
-                                {{--<td style="text-align: right">{{ number_format($statement['debit'],2) }}</td>--}}
-                                {{--<td style="text-align: right">{{ number_format($runningBalance,2) }}</td>--}}
+                                <td style="text-align: right;">{{number_format($runningBalance,2) }}</td>
                             </tr>
                             @endforeach
                         @else
