@@ -54,11 +54,11 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>House Number</th>
-                            <th>Bill Type</th>
+                            {{--<th>House Number</th>--}}
+                            {{--<th>Bill Type</th>--}}
                             <th>Reference</th>
-                            <th style="text-align: right">Credit</th>
                             <th style="text-align: right">Debit</th>
+                            {{--<th style="text-align: right">Credit</th>--}}
                             <th style="text-align: right">Running Balance</th>
                         </tr>
                     </thead>
@@ -78,7 +78,8 @@
                                 {{--<td>{{$statement->date}}</td>--}}
                                 {{--<td>{{ $statement['house_number'] }}</td>--}}
                                 {{--<td>{{ $statement['bill_type'] }}</td>--}}
-                                {{--<td>{{ $statement['ref_number'] }}</td>--}}
+                                <td>{{ $statement->ref_number}}</td>
+                                <td>{{$statement->amount}}</td>
                                 {{--<td style="text-align: right">{{ number_format($statement['credit'],2) }}</td>--}}
                                 {{--<td style="text-align: right">{{ number_format($statement['debit'],2) }}</td>--}}
                                 {{--<td style="text-align: right">{{ number_format($runningBalance,2) }}</td>--}}
