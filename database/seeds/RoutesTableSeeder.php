@@ -387,41 +387,41 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($coreAdmin);
 
 ####### Property sales
-        $parent = Route::create([
-            'route_name'=> 'Property Sales',
-            'icon'=> 'fa-shopping-cart',
-            'sequence'=>5,
-        ]);
-
-        $child = Route::create([
-            'route_name'=>'Property Types',
-            'parent_route' => $parent->id,
-            'url'=>'propertyTypes'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-        $child = Route::create([
-            'route_name'=>'Property Listings',
-            'parent_route' => $parent->id,
-            'url'=>'propertyListings'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Sold Properties',
-
-            'parent_route' => $parent->id,
-            'url'=>'soldProperties'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
+//        $parent = Route::create([
+//            'route_name'=> 'Property Sales',
+//            'icon'=> 'fa-shopping-cart',
+//            'sequence'=>5,
+//        ]);
+//
+//        $child = Route::create([
+//            'route_name'=>'Property Types',
+//            'parent_route' => $parent->id,
+//            'url'=>'propertyTypes'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//        $child = Route::create([
+//            'route_name'=>'Property Listings',
+//            'parent_route' => $parent->id,
+//            'url'=>'propertyListings'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'Sold Properties',
+//
+//            'parent_route' => $parent->id,
+//            'url'=>'soldProperties'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 
 
         #### user management
