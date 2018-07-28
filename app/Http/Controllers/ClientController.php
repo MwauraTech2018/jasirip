@@ -56,8 +56,11 @@ class ClientController extends AppBaseController
         $this->validate($request,[
             'member_no'=>'required|unique:masterfiles,member_no',
             'phone_number'=>'required|unique:masterfiles,phone_number'
-//
         ]);
+//        dd($input);
+        if(is_null($request->email)){
+            $input['email']='test@gmail.com';
+        }
         $input['b_role'] = client;
         $input['created_by']=Auth::user()->mf_id;
         $client = $this->clientRepository->create($input);

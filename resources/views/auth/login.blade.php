@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>Marite Enterprises Ltd</b><br></a>
+        <a href="{{ url('/home') }}"><b>Jasiri Sacco Ltd</b><br></a>
     </div>
 
     <!-- /.login-logo -->
