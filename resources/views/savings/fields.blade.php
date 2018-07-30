@@ -1,32 +1,67 @@
 <!-- Payment Mode Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('payment_mode', 'Payment Mode:') !!}
-    {!! Form::text('payment_mode', null, ['class' => 'form-control']) !!}
-</div>
+    {!! Form::label('client_id', 'Client Id:') !!}
+    {{--{!! Form::number('client_id', null, ['class' => 'form-control']) !!}
+    --}}
+    <select class="form-control select2" name="client_id" id="client_id">
+        <option value="">Select Client</option>
+        @if(count($clients))
+            @foreach($clients  as $client)
+                <option value="{{$client->id}}">{{$client->full_name}}</option>
+            @endforeach
+        @endif
+    </select>
 
-<!-- Service Id Field -->
+</div>
 <div class="form-group col-sm-12">
     {!! Form::label('service_id', 'Service Id:') !!}
-    {!! Form::number('service_id', null, ['class' => 'form-control']) !!}
+    {{--{!! Form::number('service_id', null, ['class' => 'form-control']) !!}--}}
+    <select class="form-control select2" name="service_id" id="service_id">
+        <option value="">Select Sercice Type</option>
+        @if(count($services))
+
+            @foreach($services as $service)
+                <option value="{{$service->id}}">{{$service->name}}</option>
+
+            @endforeach
+        @endif
+
+    </select>
 </div>
 
-<!-- Client Id Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('client_id', 'Client Id:') !!}
-    {!! Form::number('client_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('payment_mode', 'Payment Mode:') !!}
+    {{--{!! Form::text('payment_mode', null, ['class' => 'form-control']) !!}--}}
+<select class="form-control select2" name="payment_mode" id="payment-mode">
+        <option value="CASH">Cash</option>
+        <option value="Bank">Bank</option>
+        <option value="MPESA">Mpesa</option>
+    </select>
 </div>
 
-<!-- Ref Number Field -->
+<div class="form-group col-sm-12" id="bank-div" style="display: none;">
+    {!! Form::label('bank_id', 'Bank Id:') !!}
+    <select class="form-control select2" name="bank_id" id="bank-id">
+
+        <option value="">Select Bank</option>
+
+        @if(count($banks))
+
+            @foreach($banks as $bank)
+                <option value="{{$bank->id}}">{{$bank->name}}</option>
+            @endforeach
+            @endif
+    </select>
+    {{--{!! Form::number('bank_id', null, ['class' => 'form-control']) !!}--}}
+</div>
+
 <div class="form-group col-sm-12">
     {!! Form::label('ref_number', 'Ref Number:') !!}
     {!! Form::text('ref_number', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Bank Id Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('bank_id', 'Bank Id:') !!}
-    {!! Form::number('bank_id', null, ['class' => 'form-control']) !!}
-</div>
+
 
 <!-- Amount Field -->
 <div class="form-group col-sm-12">
