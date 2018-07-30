@@ -224,16 +224,15 @@ class RoutesTableSeeder extends Seeder
             'sequence'=>5,
         ]);
 
-        $child = Route::create([
-            'route_name'=>'All Bills',
-            'parent_route' => $parent->id,
-            'url'=>'billDetails'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
+//        $child = Route::create([
+//            'route_name'=>'All Bills',
+//            'parent_route' => $parent->id,
+//            'url'=>'billDetails'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 //        $child = Route::create([
 //            'route_name'=>'Pay Bills',
 //            'parent_route' => $parent->id,
