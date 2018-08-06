@@ -178,44 +178,44 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($manager);
         $child->roles()->attach($coreAdmin);
 
-        $child = Route::create([
-            'route_name'=>'Property Expenditures',
-            'parent_route' => $parent->id,
-            'url'=>'propertyExpenditures'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
+//        $child = Route::create([
+//            'route_name'=>'Property Expenditures',
+//            'parent_route' => $parent->id,
+//            'url'=>'propertyExpenditures'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 
 
         ####### Lease manager
 
-        $parent = Route::create([
-            'route_name'=> 'Lease Manager',
-            'icon'=> 'fa-briefcase',
-            'sequence'=>5,
-        ]);
-
-        $child = Route::create([
-            'route_name'=>'All Leases',
-            'parent_route' => $parent->id,
-            'url'=>'leases'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-
-        $child = Route::create([
-            'route_name'=>'Terminated Leases',
-            'parent_route' => $parent->id,
-            'url'=>'terminatedLeases'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($coreAdmin);
-
+//        $parent = Route::create([
+//            'route_name'=> 'Lease Manager',
+//            'icon'=> 'fa-briefcase',
+//            'sequence'=>5,
+//        ]);
+//
+//        $child = Route::create([
+//            'route_name'=>'All Leases',
+//            'parent_route' => $parent->id,
+//            'url'=>'leases'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//
+//        $child = Route::create([
+//            'route_name'=>'Terminated Leases',
+//            'parent_route' => $parent->id,
+//            'url'=>'terminatedLeases'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($coreAdmin);
+//
 
         ####### Bills and payments
         $parent = Route::create([
@@ -223,76 +223,67 @@ class RoutesTableSeeder extends Seeder
             'icon'=> 'fa-money',
             'sequence'=>5,
         ]);
-
+//?
+        $child = Route::create([
+            'route_name'=>'Pay Bills',
+            'parent_route' => $parent->id,
+            'url'=>'payBills'
+        ]);
+        $child->roles()->attach($admin);
+//
 //        $child = Route::create([
-//            'route_name'=>'All Bills',
+//            'route_name'=>'Cash/Bank Payments',
 //            'parent_route' => $parent->id,
-//            'url'=>'billDetails'
+//            'url'=>'cashPayments'
 //        ]);
 //        $child->roles()->attach($admin);
 //        $child->roles()->attach($frontOffice);
 //        $child->roles()->attach($manager);
 //        $child->roles()->attach($coreAdmin);
+//
 //        $child = Route::create([
-//            'route_name'=>'Pay Bills',
+//            'route_name'=>'Processed Mpesa Payments',
 //            'parent_route' => $parent->id,
-//            'url'=>'payBills'
+//            'url'=>'payments'
 //        ]);
 //        $child->roles()->attach($admin);
-
-        $child = Route::create([
-            'route_name'=>'Cash/Bank Payments',
-            'parent_route' => $parent->id,
-            'url'=>'cashPayments'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Processed Mpesa Payments',
-            'parent_route' => $parent->id,
-            'url'=>'payments'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'UnProcessed Mpesa Payments',
-            'parent_route' => $parent->id,
-            'url'=>'unprocessedPayments'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Payment Transfers',
-            'parent_route' => $parent->id,
-            'url'=>'paymentTransfers'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'CrossCheck Payments',
-            'parent_route' => $parent->id,
-            'url'=>'crossCheckTrans'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Landlord Remittances',
-            'parent_route' => $parent->id,
-            'url'=>'landlordRemittances'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($coreAdmin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'UnProcessed Mpesa Payments',
+//            'parent_route' => $parent->id,
+//            'url'=>'unprocessedPayments'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'Payment Transfers',
+//            'parent_route' => $parent->id,
+//            'url'=>'paymentTransfers'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'CrossCheck Payments',
+//            'parent_route' => $parent->id,
+//            'url'=>'crossCheckTrans'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'Landlord Remittances',
+//            'parent_route' => $parent->id,
+//            'url'=>'landlordRemittances'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($coreAdmin);
 
         ####### Reports
         $parent = Route::create([
@@ -312,78 +303,78 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($coreAdmin);
         $child->roles()->attach($fofficer);
 
-        $child = Route::create([
-            'route_name'=>'Tenant Arrears',
-            'parent_route' => $parent->id,
-            'url'=>'tenantArrears'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-        $child->roles()->attach($fofficer);
-
-        $child = Route::create([
-            'route_name'=>'Property Statement',
-            'parent_route' => $parent->id,
-            'url'=>'plotStatement'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-        $child->roles()->attach($fofficer);
-
-        $child = Route::create([
-            'route_name'=>'Landlord Property Report',
-            'parent_route' => $parent->id,
-            'url'=>'landlordSettlementStatement'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Landlord Summary Report',
-            'parent_route' => $parent->id,
-            'url'=>'landlordPSettlements'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Rent Collection Report',
-            'parent_route' => $parent->id,
-            'url'=>'rentpay'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-        $child = Route::create([
-            'route_name'=>'Daily Collection Report',
-            'parent_route' => $parent->id,
-            'url'=>'dailyPayments'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
-
-
-        $child = Route::create([
-            'route_name'=>'Bank Statement Report',
-            'parent_route' => $parent->id,
-            'url'=>'bankStatement'
-        ]);
-        $child->roles()->attach($admin);
-        $child->roles()->attach($frontOffice);
-        $child->roles()->attach($manager);
-        $child->roles()->attach($coreAdmin);
+//        $child = Route::create([
+//            'route_name'=>'Tenant Arrears',
+//            'parent_route' => $parent->id,
+//            'url'=>'tenantArrears'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//        $child->roles()->attach($fofficer);
+//
+//        $child = Route::create([
+//            'route_name'=>'Property Statement',
+//            'parent_route' => $parent->id,
+//            'url'=>'plotStatement'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//        $child->roles()->attach($fofficer);
+//
+//        $child = Route::create([
+//            'route_name'=>'Landlord Property Report',
+//            'parent_route' => $parent->id,
+//            'url'=>'landlordSettlementStatement'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'Landlord Summary Report',
+//            'parent_route' => $parent->id,
+//            'url'=>'landlordPSettlements'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'Rent Collection Report',
+//            'parent_route' => $parent->id,
+//            'url'=>'rentpay'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//        $child = Route::create([
+//            'route_name'=>'Daily Collection Report',
+//            'parent_route' => $parent->id,
+//            'url'=>'dailyPayments'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
+//
+//
+//        $child = Route::create([
+//            'route_name'=>'Bank Statement Report',
+//            'parent_route' => $parent->id,
+//            'url'=>'bankStatement'
+//        ]);
+//        $child->roles()->attach($admin);
+//        $child->roles()->attach($frontOffice);
+//        $child->roles()->attach($manager);
+//        $child->roles()->attach($coreAdmin);
 
 ####### Property sales
 //        $parent = Route::create([
