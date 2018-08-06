@@ -132,15 +132,33 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($manager);
         $child->roles()->attach($coreAdmin);
 
-//        $child = Route::create([
-//            'route_name'=>'All Tenants',
-//            'parent_route' => $parent->id,
-//            'url'=>'tenants'
-//        ]);
-//        $child->roles()->attach($admin);
-//        $child->roles()->attach($frontOffice);
-//        $child->roles()->attach($manager);
-//        $child->roles()->attach($coreAdmin);
+
+
+        $child = Route::create([
+            'route_name'=>'All Staff',
+            'parent_route' => $parent->id,
+            'url'=>'staff'
+        ]);
+        $child->roles()->attach($admin);
+####### Loan Module
+
+        $parent = Route::create([
+            'route_name'=> 'Loan',
+            'icon'=> 'fa-users',
+            'sequence'=>3,
+        ]);
+
+        $child = Route::create([
+            'route_name'=>'All Clients',
+            'parent_route' => $parent->id,
+            'url'=>'clients'
+        ]);
+        $child->roles()->attach($admin);
+        $child->roles()->attach($frontOffice);
+        $child->roles()->attach($manager);
+        $child->roles()->attach($coreAdmin);
+
+
 
         $child = Route::create([
             'route_name'=>'All Staff',
@@ -150,15 +168,6 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($admin);
 
 
-//        $child = Route::create([
-//            'route_name'=>'All Customers',
-//            'parent_route' => $parent->id,
-//            'url'=>'customers'
-//        ]);
-//        $child->roles()->attach($admin);
-//        $child->roles()->attach($frontOffice);
-//        $child->roles()->attach($manager);
-//        $child->roles()->attach($coreAdmin);
 
         ####### property manager
 
