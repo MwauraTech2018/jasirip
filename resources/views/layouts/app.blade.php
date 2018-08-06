@@ -53,7 +53,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" id="logout-btn" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="{{ asset('Logo.bmp') }}"
+                                <img src="{{ asset('Logo4.png') }}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -61,7 +61,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="{{ asset('Logo.bmp') }}"
+                                    <img src="{{ asset('Logo4.png') }}"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
