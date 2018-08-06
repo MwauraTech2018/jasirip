@@ -108,3 +108,37 @@
         </div>
 
     @endsection
+@push('js')
+
+
+    <script>
+
+        $('#payment-mode').on('change',function(){
+            let val = $(this).val();
+            console.log(val);
+            if(val === 'Bank'){
+                $('#bank-div').show();
+                $('#bank-id').attr('required','required')
+            }else{
+                $('#bank-id').removeAttr('required');
+                $('#bank-div').hide();
+
+            }
+        })
+        // $('#payment-m').on('change',function(){
+        //     let val = $(this).val();
+        //     if(val === 'Bank'){
+        //         $('#bank-d').show();
+        //         $('#bank-i').attr('required','required')
+        //     }else{
+        //         $('#bank-i').removeAttr('required');
+        //         $('#bank-d').hide();
+        //
+        //     }
+        // })
+
+
+
+    </script>
+
+@endpush

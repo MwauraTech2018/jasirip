@@ -6,8 +6,11 @@ use App\DataTables\SavingDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateSavingRequest;
 use App\Http\Requests\UpdateSavingRequest;
+use App\Models\Bank;
 use App\Models\CustomerAccount;
+use App\Models\Masterfile;
 use App\Models\Payment;
+use App\Models\ServiceOption;
 use App\Repositories\SavingRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -33,9 +36,18 @@ class SavingController extends AppBaseController
      * @return Response
      */
     public function index(SavingDataTable $savingDataTable)
+//
+
+//    dd($client);
     {
-        return $savingDataTable->render('savings.index');
-//        ,[
+        return $savingDataTable->render('savings.index',[
+
+            'clients'=>Masterfile::where('b_role',client)->get(),
+            'services'=>ServiceOption::all(),
+            'banks'=>Bank::all()
+//            Masterfile::where('b_role',landlord)->get(),
+//            newQuery()->where('b_role',\client)->orderBy('id');
+        ]);
 //
 //            'payments'=>Payment::all()
 //        ]);
