@@ -1,16 +1,7 @@
 <!-- Payment Mode Field -->
 <div class="form-group col-sm-12">
-<<<<<<< HEAD
     {!! Form::label('client_id', 'Client Name:') !!}
-=======
-<<<<<<< HEAD
-    {!! Form::label('client_id', 'Client Name:') !!}
-=======
-    {!! Form::label('client_id', 'Client Id:') !!}
->>>>>>> 67ab3274606ef9ea9d7e7268384cd4e705b4de1f
->>>>>>> 4569c13326170aeaa5ce3fd3a5caac929379aab7
-    {{--{!! Form::number('client_id', null, ['class' => 'form-control']) !!}
-    --}}
+
     <select class="form-control select2" name="client_id" id="client_id">
         <option value="">Select Client</option>
         @if(count($clients))
@@ -22,16 +13,9 @@
 
 </div>
 <div class="form-group col-sm-12">
-<<<<<<< HEAD
+
     {!! Form::label('service_id', 'Service Type:') !!}
-=======
-<<<<<<< HEAD
-    {!! Form::label('service_id', 'Service Type:') !!}
-=======
-    {!! Form::label('service_id', 'Service Id:') !!}
->>>>>>> 67ab3274606ef9ea9d7e7268384cd4e705b4de1f
->>>>>>> 4569c13326170aeaa5ce3fd3a5caac929379aab7
-    {{--{!! Form::number('service_id', null, ['class' => 'form-control']) !!}--}}
+
     <select class="form-control select2" name="service_id" id="service_id">
         <option value="">Select Sercice Type</option>
         @if(count($services))
@@ -56,15 +40,9 @@
 </div>
 
 <div class="form-group col-sm-12" id="bank-div" style="display: none;">
-<<<<<<< HEAD
+
     {!! Form::label('bank_id', 'Bank Name:') !!}
-=======
-<<<<<<< HEAD
-    {!! Form::label('bank_id', 'Bank Name:') !!}
-=======
-    {!! Form::label('bank_id', 'Bank Id:') !!}
->>>>>>> 67ab3274606ef9ea9d7e7268384cd4e705b4de1f
->>>>>>> 4569c13326170aeaa5ce3fd3a5caac929379aab7
+
     <select class="form-control select2" name="bank_id" id="bank-id">
 
         <option value="">Select Bank</option>
