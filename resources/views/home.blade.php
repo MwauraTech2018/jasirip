@@ -25,7 +25,7 @@
             <div class="small-box bg-green">
                 <div class="inner">
                     <p>SMS Credits remaining</p>
-                    <h3><span id="bal-span">...</span><sup style="font-size: 20px"> Ksh</sup></h3>
+                    <h3><span id="">...</span><sup style="font-size: 20px"> Ksh</sup></h3>
 
                 </div>
                 <div class="icon">
