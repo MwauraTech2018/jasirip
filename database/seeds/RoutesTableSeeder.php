@@ -140,6 +140,7 @@ class RoutesTableSeeder extends Seeder
             'url'=>'staff'
         ]);
         $child->roles()->attach($admin);
+
 ####### Loan Module
 
         $parent = Route::create([
@@ -149,9 +150,9 @@ class RoutesTableSeeder extends Seeder
         ]);
 
         $child = Route::create([
-            'route_name'=>'All Clients',
+            'route_name'=>'Loan_Types',
             'parent_route' => $parent->id,
-            'url'=>'clients'
+            'url'=>'loanTypes'
         ]);
         $child->roles()->attach($admin);
         $child->roles()->attach($frontOffice);
@@ -169,7 +170,7 @@ class RoutesTableSeeder extends Seeder
 
 
 
-        ####### property manager
+        ####### Savings Menu
 
         $parent = Route::create([
             'route_name'=> 'Savings',
