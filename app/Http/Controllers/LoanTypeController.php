@@ -18,6 +18,7 @@ class LoanTypeController extends AppBaseController
 
     public function __construct(LoanTypeRepository $loanTypeRepo)
     {
+        $this->middleware('auth');
         $this->loanTypeRepository = $loanTypeRepo;
     }
 

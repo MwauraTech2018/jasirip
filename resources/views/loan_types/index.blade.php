@@ -57,6 +57,7 @@
     <div class="modal fade" id="edit-modal" role="dialog">
            <form method="post" id="edit-form">
                {{ csrf_field() }}
+               {{--{!! Form::open(['route' => 'loanTypes.show']) !!}--}}
            <input name="_method" type="hidden" value="PATCH">
            <div class="modal-dialog">
                <div class="modal-content">
@@ -72,7 +73,7 @@
                         </div>
                    </div>
                    <div class="modal-footer">
-                       <input type="hidden" id="editDetails" value="{{ url("/loan_types") }}">
+                       <input type="hidden" id="editDetails" value="{{ url("/loanTypes") }}">
                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
                        <button type="submit" class="btn btn-primary">Save</button>
                    </div>
