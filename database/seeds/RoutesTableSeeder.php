@@ -162,7 +162,7 @@ class RoutesTableSeeder extends Seeder
 
 
         $child = Route::create([
-            'route_name'=>'All Staff',
+            'route_name'=>'Loan Application',
             'parent_route' => $parent->id,
             'url'=>'staff'
         ]);
