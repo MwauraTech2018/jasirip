@@ -197,3 +197,7 @@ Route::resource('savings', 'SavingController');
 
 
 Route::resource('loanTypes', 'LoanTypeController');
+
+
+
+Route::resource('loanApplications', 'LoanApplicationController');
