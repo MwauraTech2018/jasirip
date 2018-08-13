@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\LoanApplication;
+use Illuminate\Support\Carbon;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -18,7 +19,22 @@ class LoanApplicationDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'loan_applications.datatables_actions');
+        return $dataTable
+            ->addColumn('action', 'loan_applications.datatables_actions')
+//            ->addColumn('gurantors','view gurantors')
+            ->editColumn('application_date',function($loan){
+
+                return Carbon::parse($loan->application_date)->toFormattedDateString();
+            })
+            ->editColumn('status',function ($loans){
+
+                if(!$loans->status){
+                    return '<label class="label label-danger">Not Approved</label>';
+                }
+                    return '<label class="label label-success">Approved</label>';
+            })
+
+            ->rawColumns(['status','action']);
     }
 
     /**

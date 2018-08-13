@@ -62,6 +62,7 @@ class LoanApplicationController extends AppBaseController
         $input = $request->all();
 
         $input['created_by']=Auth::user()->id;
+        $input['status']=false;
 
         $loanApplication = $this->loanApplicationRepository->create($input);
 
