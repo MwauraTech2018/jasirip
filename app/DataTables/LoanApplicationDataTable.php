@@ -20,7 +20,7 @@ class LoanApplicationDataTable extends DataTable
         $dataTable = new EloquentDataTable($query);
 
         return $dataTable
-            ->addColumn('action', 'loan_applications.datatables_actions')
+//            ->addColumn('action', 'loan_applications.datatables_actions')
 //            ->addColumn('gurantors','view gurantors')
             ->editColumn('application_date',function($loan){
 
@@ -34,7 +34,7 @@ class LoanApplicationDataTable extends DataTable
                     return '<label class="label label-success">Approved</label>';
             })
 
-            ->rawColumns(['status','action']);
+            ->rawColumns(['status']);
     }
 
     /**
