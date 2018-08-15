@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\LoanApplication;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
@@ -33,8 +34,16 @@ class LoanApplicationDataTable extends DataTable
                 }
                     return '<label class="label label-success">Approved</label>';
             })
+            ->editColumn('created_by',function($loans){
 
-            ->rawColumns(['status']);
+                if(!is_null($loans->created_by)){
+
+                    return User::find($loans->created_by)->name;
+                }
+                    return '';
+            })
+
+            ->rawColumns(['status','created_by']);
     }
 
     /**
