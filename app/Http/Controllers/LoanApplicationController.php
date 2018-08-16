@@ -8,7 +8,9 @@ use App\Http\Requests\CreateLoanApplicationRequest;
 use App\Http\Requests\UpdateLoanApplicationRequest;
 use App\Models\LoanType;
 use App\Models\Masterfile;
+use App\Models\User;
 use App\Repositories\LoanApplicationRepository;
+use Carbon\Carbon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\Auth;
@@ -88,7 +90,9 @@ class LoanApplicationController extends AppBaseController
             return redirect(route('loanApplications.index'));
         }
 
-        return view('loan_applications.show')->with('loanApplication', $loanApplication);
+//        return view('loan_applications.show')->with('loanApplication', $loanApplication);
+//        return response()->json(' $loanApplication ');
+        return response()->json($loanApplication);
     }
 
     /**
@@ -108,7 +112,10 @@ class LoanApplicationController extends AppBaseController
             return redirect(route('loanApplications.index'));
         }
 
-        return view('loan_applications.edit')->with('loanApplication', $loanApplication);
+//        return view('loan_applications.edit')->with('loanApplication', $loanApplication);
+
+        return response()->json(' $loanApplication ');
+
     }
 
     /**
@@ -122,6 +129,23 @@ class LoanApplicationController extends AppBaseController
     public function update($id, UpdateLoanApplicationRequest $request)
     {
         $loanApplication = $this->loanApplicationRepository->findWithoutFail($id);
+        $input=$request->all();
+//        dd($input);
+
+        $input['approved_by']=Auth::user()->id;
+        $input['approved_date']=Carbon::now();
+        $loantype=LoanType::where('id',$request->loan_type_id)->first();
+//        $int=LoanType::query()
+//            ->where('id','=',$request->loan_type_id)->get();
+////        $all=10*$int->int;
+///
+///
+//           $int=$loantype->id;
+        $input['balance_todate']=($request->approved_amt*$loantype->int/100)+($request->approved_amt);
+
+//            print_r($loantype->toArray());die();
+
+
 
         if (empty($loanApplication)) {
             Flash::error('Loan Application not found');
@@ -129,11 +153,32 @@ class LoanApplicationController extends AppBaseController
             return redirect(route('loanApplications.index'));
         }
 
-        $loanApplication = $this->loanApplicationRepository->update($request->all(), $id);
+        $loanApplication = $this->loanApplicationRepository->update($input, $id);
 
         Flash::success('Loan Application updated successfully.');
 
         return redirect(route('loanApplications.index'));
+    }
+
+    public function loanApproval($id,UpdateLoanApplicationRequest $request)
+        {
+
+        $loanApplication = $this->loanApplicationRepository->findWithoutFail($id);
+        $input=$request->all();
+        dd($input);
+
+        if (empty($loanApplication)) {
+            Flash::error('Loan Application not found');
+
+            return redirect(route('loanApplications.index'));
+        }
+
+        $loanApplication = $this->loanApplicationRepository->update($input,$id);
+
+        Flash::success('Loan Application updated successfully.');
+
+        return redirect(route('loanApplications.index'));
+
     }
 
     /**

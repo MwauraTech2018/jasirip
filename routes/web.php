@@ -201,3 +201,4 @@ Route::resource('loanTypes', 'LoanTypeController');
 
 
 Route::resource('loanApplications', 'LoanApplicationController');
+Route::resource('loanApproval', 'LoanApplicationController@loanApproval');

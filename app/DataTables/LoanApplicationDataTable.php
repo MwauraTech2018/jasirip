@@ -34,16 +34,31 @@ class LoanApplicationDataTable extends DataTable
                 }
                     return '<label class="label label-success">Approved</label>';
             })
-            ->editColumn('created_by',function($loans){
+            ->editColumn('created_by',function($loan){
 
-                if(!is_null($loans->created_by)){
+                if(!is_null($loan->created_by)){
 
-                    return User::find($loans->created_by)->name;
+                    return User::find($loan->created_by)->name;
                 }
                     return '';
             })
 
-            ->rawColumns(['status','created_by']);
+            ->editColumn('approved_by',function ($loan){
+
+                if(!$loan->approved_by){
+                    return '<a href="#edit2-modal" data-toggle="modal" e-id="'.$loan->id.'" hint="'.url('loanApplications/'.$loan->id).'" class="btn btn-default btn-xs edit-common" ><i class="glyphicon glyphicon-eye-edit"></i>update</a>';
+                }
+//                <a href="#edit-modal" data-toggle="modal" e-id="{{ $id}}" hint="{!! url('banks/'.$id) !!}" class='btn btn-default btn-xs edit-common'><i class="glyphicon glyphicon-eye-edit"></i> edit</a>
+                if(!is_null($loan->approved_by)){
+
+                    return User::find($loan->approved_by)->name;
+                }
+                return '';
+
+            })
+
+
+            ->rawColumns(['status','created_by','approved_by']);
     }
 
     /**
@@ -97,10 +112,10 @@ class LoanApplicationDataTable extends DataTable
             'masterfile.full_name'=>[
                 'title'=>'Client'
             ],
-//            'loan_type_id',
-        'loantype.name'=>[
-            'title'=>'Ltype'
-        ],
+            'loan_type_id',
+//        'loantype.name'=>[
+//            'title'=>'Ltype'
+//        ],
             'application_date',
             'applied_amt',
             'approved_amt',
@@ -117,8 +132,11 @@ class LoanApplicationDataTable extends DataTable
 //            'masterfile.full_name'=>[
 //                'title'=>'Client'
 //            ],
-            'approved_by',
-            'status'
+            'approved_by'=>[
+                'title'=>'Updated By'
+            ],
+            'status',
+            'updated_at'
         ];
     }
 

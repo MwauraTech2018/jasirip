@@ -54,33 +54,60 @@
         {!! Form::close() !!}
     </div>
 
-    <div class="modal fade" id="edit-modal" role="dialog">
-           <form method="post" id="edit-form">
-               {{ csrf_field() }}
-           <input name="_method" type="hidden" value="PATCH">
-           <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                       </button>
-                       <h4 class="modal-title">Edit loan_applications</h4>
-                   </div>
-                   <div class="modal-body">
+    {{--<div class="modal fade" id="edit-modal" role="dialog">--}}
+           {{--<form method="post" id="edit-form">--}}
+               {{--{{ csrf_field() }}--}}
+           {{--<input name="_method" type="hidden" value="PATCH">--}}
+           {{--<div class="modal-dialog">--}}
+               {{--<div class="modal-content">--}}
+                   {{--<div class="modal-header">--}}
+                       {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                           {{--<span aria-hidden="true">&times;</span>--}}
+                       {{--</button>--}}
+                       {{--<h4 class="modal-title">Edit loan_applications</h4>--}}
+                   {{--</div>--}}
+                   {{--<div class="modal-body">--}}
+                        {{--<div class="row">--}}
+                           {{--@include('loan_applications.fields'))--}}
+                        {{--</div>--}}
+                   {{--</div>--}}
+                   {{--<div class="modal-footer">--}}
+                       {{--<input type="hidden" id="editDetails" value="{{url("/loanApplications") }}">--}}
+                       {{--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>--}}
+                       {{--<button type="submit" class="btn btn-primary">Save</button>--}}
+                   {{--</div>--}}
+               {{--</div>--}}
+               {{--<!-- /.modal-content -->--}}
+           {{--</div>--}}
+           {{--</form>--}}
+       {{--</div>--}}
+    <div class="modal fade" id="edit2-modal" role="dialog">
+        <form method="post" id="edit-form">
+            {{ csrf_field() }}
+            <input name="_method" type="hidden" value="PATCH">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Update loan_applications</h4>
+                    </div>
+                    <div class="modal-body">
                         <div class="row">
-                           @include('loan_applications.fields')
+                            @include('loan_applications.fields2')
                         </div>
-                   </div>
-                   <div class="modal-footer">
-                       <input type="hidden" id="editDetails" value="{{ url("/loan_applications") }}">
-                       <button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
-                       <button type="submit" class="btn btn-primary">Save</button>
-                   </div>
-               </div>
-               <!-- /.modal-content -->
-           </div>
-           </form>
-       </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="editDetails" value="{{ url("/loanApplications") }}">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+    </div>
 
      {{--delete modal--}}
         <div class="modal fade" id="delete-modal" role="dialog">
