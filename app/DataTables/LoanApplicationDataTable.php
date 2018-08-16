@@ -60,9 +60,15 @@ class LoanApplicationDataTable extends DataTable
                 return '';
 
             })
+            ->editColumn('updated_at',function($loan){
+
+//                return '<a href="#edit2-modal" data-toggle="modal" e-id="'.$loan->id.'" hint="'.url('loanApplications/'.$loan->id).'" class="btn btn-default btn-xs edit-common" ><i class="glyphicon glyphicon-eye-edit"></i>update</a>';
+                return '<a href="#split-payment" data-toggle="modal" payment-id="'.$loan->id .'" class="btn btn-primary btn-xs split-payment">Gurantors</a>';
+
+            })
 
 
-            ->rawColumns(['status','created_by','approved_by']);
+            ->rawColumns(['status','created_by','approved_by','updated_at']);
     }
 
     /**
