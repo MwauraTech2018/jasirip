@@ -133,7 +133,7 @@ class LoanApplicationController extends AppBaseController
 //        dd($input);
 
         $input['approved_by']=Auth::user()->id;
-        $input['approved_date']=Carbon::now();
+        $input['approval_date']=Carbon::now();
         $loantype=LoanType::where('id',$request->loan_type_id)->first();
 //        $int=LoanType::query()
 //            ->where('id','=',$request->loan_type_id)->get();
