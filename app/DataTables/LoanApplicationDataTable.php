@@ -27,6 +27,10 @@ class LoanApplicationDataTable extends DataTable
 
                 return Carbon::parse($loan->application_date)->toFormattedDateString();
             })
+            ->editColumn('approval_date',function($loan){
+
+                return Carbon::parse($loan->approval_date)->toFormattedDateString();
+            })
             ->editColumn('status',function ($loans){
 
                 if(!$loans->status){
