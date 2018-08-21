@@ -61,9 +61,11 @@ class LoanApplicationDataTable extends DataTable
 
             })
             ->editColumn('updated_at',function($loan){
+                $id=$loan->id;
 
 //                return '<a href="#edit2-modal" data-toggle="modal" e-id="'.$loan->id.'" hint="'.url('loanApplications/'.$loan->id).'" class="btn btn-default btn-xs edit-common" ><i class="glyphicon glyphicon-eye-edit"></i>update</a>';
-                return '<a href="#split-payment" data-toggle="modal" payment-id="'.$loan->id .'" class="btn btn-primary btn-xs split-payment">Gurantors</a>';
+                return '<a data-toggle="modal" href="#details-modal"  hint="'.url('lDetails/'.$id).'" class="btn btn-primary btn-xs loan-details">Gurantors</a>';
+//                return '<a data-toggle="modal" href="#details-modal" hint="'.url('lDetails/'.$loan->id).'" class="btn btn-success btn-xs loan-details">View Details</a>';
 
             })
 
@@ -118,7 +120,7 @@ class LoanApplicationDataTable extends DataTable
     protected function getColumns()
     {
         return [
-//            'mem_no',
+            'id',
             'masterfile.full_name'=>[
                 'title'=>'Client'
             ],
@@ -132,12 +134,13 @@ class LoanApplicationDataTable extends DataTable
             'approval_date'=>[
                 'title'=>'DateApproved'
             ],
-            'repayment_prd'=>[
-                'title'=>'Repayments'
-            ],
             'balance_todate'=>[
                 'title'=>'Balance'
             ],
+            'repayment_prd'=>[
+                'title'=>'Repayments'
+            ],
+
             'created_by',
 //            'masterfile.full_name'=>[
 //                'title'=>'Client'
@@ -146,7 +149,9 @@ class LoanApplicationDataTable extends DataTable
                 'title'=>'Updated By'
             ],
             'status',
-            'updated_at'
+            'updated_at'=>[
+                'title'=>'Gurantors'
+            ]
         ];
     }
 

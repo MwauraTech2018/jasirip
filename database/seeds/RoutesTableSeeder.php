@@ -171,6 +171,15 @@ class RoutesTableSeeder extends Seeder
         $child->roles()->attach($manager);
         $child->roles()->attach($coreAdmin);
 
+        $child = Route::create([
+            'route_name'=>'Gurantors',
+            'parent_route' => $parent->id,
+            'url'=>'gurantors'
+        ]);
+        $child->roles()->attach($admin);
+        $child->roles()->attach($frontOffice);
+        $child->roles()->attach($manager);
+        $child->roles()->attach($coreAdmin);
 
 
         ####### Savings Menu

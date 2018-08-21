@@ -207,4 +207,13 @@ class SavingController extends AppBaseController
 
         return redirect(route('savings.index'));
     }
+    public function savbalance($id)
+    {
+            $balz=Payment::where('client_id',$id)
+                    ->where('service_id',2)
+                    ->sum('amount');
+
+            return response()->json($balz);
+
+    }
 }

@@ -6,6 +6,7 @@ use App\DataTables\LoanApplicationDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateLoanApplicationRequest;
 use App\Http\Requests\UpdateLoanApplicationRequest;
+use App\Models\Gurantor;
 use App\Models\LoanType;
 use App\Models\Masterfile;
 use App\Models\User;
@@ -160,7 +161,7 @@ class LoanApplicationController extends AppBaseController
         return redirect(route('loanApplications.index'));
     }
 
-    public function loanApproval($id,UpdateLoanApplicationRequest $request)
+    public function loanapproval($id)
         {
 
         $loanApplication = $this->loanApplicationRepository->findWithoutFail($id);
@@ -204,4 +205,12 @@ class LoanApplicationController extends AppBaseController
 
         return redirect(route('loanApplications.index'));
     }
+    public function details($id)
+        {
+                $details=Gurantor::where('loan_id',$id)->get();
+
+//                print_r($details->toArray());die;
+                return response()->json($details);
+//            echo json_encode($details);
+        }
 }
