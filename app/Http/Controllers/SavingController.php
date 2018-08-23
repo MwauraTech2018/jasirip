@@ -209,11 +209,23 @@ class SavingController extends AppBaseController
     }
     public function savbalance($id)
     {
+        $balz=0;
             $balz=Payment::where('client_id',$id)
                     ->where('service_id',2)
                     ->sum('amount');
 
-            return response()->json($balz);
+            if(!$balz){
+                $bal=1;
+
+                return response()->json($bal);
+//                return redirect(route('gurantors.index'));
+//
+//
+//                Flash::success('Member has no existing savings.');
+
+            }
+                return response()->json($balz);
+
 
     }
 }

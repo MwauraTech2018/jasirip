@@ -63,9 +63,26 @@ class GurantorController extends AppBaseController
     public function store(CreateGurantorRequest $request)
     {
         $input = $request->all();
+//        dd($input);
+
+
         $name=Masterfile::where('id',$request->mem_no)->first();
 //        dd($name->full_name);
         $input['name']=$name->full_name;
+        $balz=Payment::where('client_id',$request->mem_no)
+            ->where('service_id',2)
+            ->sum('amount');
+//        dd($balz);
+////        $expa=$totalsav * 3;
+//        $tot=$request->amount;
+////        dd($tot);
+
+        if( $request->amount > $balz){
+
+            Flash ::error('Guranteed amount cant be greater than shares');
+            return redirect(route('gurantors.index'));
+        }
+
         $gurantor = $this->gurantorRepository->create($input);
 
         Flash::success('Gurantor saved successfully.');

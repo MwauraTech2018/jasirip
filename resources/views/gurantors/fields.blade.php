@@ -22,7 +22,7 @@
     </select>
 </div>
 <div class="form-group col-sm-12">
-    <label>Savings</label>
+    <label>Total_Savings</label>
     <input type="text" name="savings" id="t_sav" class="form-control" readonly>
 </div>
 

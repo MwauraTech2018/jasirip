@@ -1,7 +1,8 @@
 <!-- Mem No Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('mem_no', 'Member:') !!}
-    {!! Form::number('mem_no', null, ['class' => 'form-control']) !!}
+    {!! Form::number('mem_no', null, ['class' => 'form-control'],['readonly']) !!}
+    {{--<input type="text" name="mem_no" class="form-control" readonly>--}}
 </div>
 <div class="form-group col-sm-12">
     {!! Form::label('loan_type_id', 'LoanType:') !!}

@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateLoanApplicationRequest;
 use App\Models\Gurantor;
 use App\Models\LoanType;
 use App\Models\Masterfile;
+use App\Models\Payment;
 use App\Models\User;
 use App\Repositories\LoanApplicationRepository;
 use Carbon\Carbon;
@@ -64,8 +65,16 @@ class LoanApplicationController extends AppBaseController
     {
         $input = $request->all();
 
+//        dd($input);
+
         $input['created_by']=Auth::user()->id;
         $input['status']=false;
+        $balz=Payment::where('client_id',$request->mem_no)
+                        ->where('service_id',2)->sum('amount');
+        if($request->applied_amt > $balz*3){
+            Flash::Error('Loan Exceeds expected amount.');
+            return redirect(route('loanApplications.index'));
+        }
 
         $loanApplication = $this->loanApplicationRepository->create($input);
 
