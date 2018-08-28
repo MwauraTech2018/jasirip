@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateLoanApplicationRequest;
 use App\Http\Requests\UpdateLoanApplicationRequest;
 use App\Models\Gurantor;
+use App\Models\LoanApplication;
 use App\Models\LoanType;
 use App\Models\Masterfile;
 use App\Models\Payment;
@@ -221,5 +222,32 @@ class LoanApplicationController extends AppBaseController
 //                print_r($details->toArray());die;
                 return response()->json($details);
 //            echo json_encode($details);
+        }
+        public function disburse($id)
+        {
+            $loan=LoanApplication::where('id',$id)->first();
+            $loggeduser=Auth::user()->id;
+
+
+             if(!is_null($loan->approved_amt)){
+                 if($loan->approved_by == $loggeduser){
+                     Flash::error('User not allowed to disburse loan.');
+                 return redirect(route('loanApplications.index'));
+                 }
+
+                 $loan=LoanApplication::findOrFail($id)->update(['disburse'=>Auth::user()->id]);
+                 return redirect(route('loanApplications.index'));
+//                 print_r($loan->toArray());dd($loan);
+
+
+             }else{
+
+                 Flash::error('To disburse loan you must update loan amount.');
+                 return redirect(route('loanApplications.index'));
+             }
+
+//            $add=LoanApplication::create([
+//                'mem_no'=>$loan->mem_no
+
         }
 }

@@ -6,8 +6,7 @@
 </div>
 <div class="form-group col-sm-12">
     {!! Form::label('loan_type_id', 'LoanType:') !!}
-    {!! Form::text('loan_type_id', null, ['class' => 'form-control']) !!}
-    {{--<input type="text" name="loan_type_id" class="form-control">--}}
+    {!! Form::number('loan_type_id', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group col-sm-12">
     {!! Form::label('Member', 'Member:') !!}

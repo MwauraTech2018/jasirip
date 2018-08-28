@@ -207,3 +207,6 @@ Route::resource('loanapprov', 'LoanApplicationController@loanapproval');
 Route::resource('gurantors', 'GurantorController');
 Route::get('lDetails/{id}','LoanApplicationController@details');
 Route::get('getBall/{id}','SavingController@savbalance');
+Route::post('lDisburse/{id}','LoanApplicationController@disburse');
+
+

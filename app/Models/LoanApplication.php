@@ -52,7 +52,8 @@ class LoanApplication extends Model
         'balance_todate',
         'created_by',
         'approved_by',
-        'status'
+        'status',
+        'disburse'
     ];
 
     /**
@@ -71,7 +72,8 @@ class LoanApplication extends Model
         'balance_todate' => 'float',
         'created_by' => 'integer',
         'approved_by' => 'integer',
-        'status' => 'boolean'
+        'status' => 'boolean',
+        'disburse'=>'integer'
     ];
 
     /**

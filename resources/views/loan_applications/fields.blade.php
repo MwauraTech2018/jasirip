@@ -18,7 +18,7 @@
 <!-- Loan Type Id Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('loan_type_id', 'LoanType:') !!}
-    {{--{!! Form::number('loan_type_id', null, ['class' => 'form-control']) !!}--}}
+    {!! Form::number('loan_type_id', null, ['class' => 'form-control']) !!}
     <select class="form-control select2" name="loan_type_id" id="loan_type_id">
         <option value="">Select Loan Type</option>
         @if(count($loantypes))
