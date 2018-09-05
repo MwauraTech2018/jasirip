@@ -18,6 +18,7 @@ class CustomerAccountController extends AppBaseController
 
     public function __construct(CustomerAccountRepository $customerAccountRepo)
     {
+        $this->middleware('auth');
         $this->customerAccountRepository = $customerAccountRepo;
     }
 

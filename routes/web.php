@@ -141,6 +141,7 @@ Route::any('getLandlordPSettlements','ReportController@getLandlordPSettlements')
 //imports
 Route::get('import','LandlordController@import');
 Route::post('importMasterfiles','LandlordController@importMasterfiles');
+Route::get('/pdf','pdfController@index');
 
 //infobip
 Route::get('infobipBalance','InfobipController@getBalance');
@@ -210,3 +211,6 @@ Route::get('getBall/{id}','SavingController@savbalance');
 Route::post('lDisburse/{id}','LoanApplicationController@disburse');
 
 
+
+
+Route::resource('loanAccounts', 'LoanAccountController');

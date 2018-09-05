@@ -18,6 +18,7 @@ class MasterfileController extends AppBaseController
 
     public function __construct(MasterfileRepository $masterfileRepo)
     {
+        $this->middleware('auth');
         $this->masterfileRepository = $masterfileRepo;
     }
 

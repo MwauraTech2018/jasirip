@@ -22,6 +22,7 @@ class GurantorController extends AppBaseController
 
     public function __construct(GurantorRepository $gurantorRepo)
     {
+        $this->middleware('auth');
         $this->gurantorRepository = $gurantorRepo;
     }
 
